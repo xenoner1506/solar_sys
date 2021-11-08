@@ -14,7 +14,7 @@ header_font = "Arial-16"
 window_width = 900
 """Ширина окна"""
 
-window_height = 1200
+window_height = 120
 """Высота окна"""
 
 scale_factor = 1
