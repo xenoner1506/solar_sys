@@ -1,3 +1,7 @@
+from PIL.ImageChops import screen
+
+from solar_objects import Star, Planet
+from solar_vis import DrawableObject
 
 
 def read_space_objects_data_from_file(input_filename):
@@ -49,7 +53,14 @@ def parse_star_parameters(line, star):
 
     **star** — объект звезды.
     """
-
+    line_star = line.split()
+    star.R = float(line_star[1])
+    star.color = line_star[2]
+    star.m = float(line_star[3])
+    star.x = float(line_star[4])
+    star.y = float(line_star[5])
+    star.Vx = float(line_star[6])
+    star.Vy = float(line_star[7])
 
 
 def parse_planet_parameters(line, planet):
@@ -70,7 +81,15 @@ def parse_planet_parameters(line, planet):
 
     **planet** — объект планеты.
     """
-    pass  # FIXME: допишите парсер
+    line_planet = line.split()
+    planet.R = float(line_planet[1])
+    planet.color = line_planet[2]
+    planet.m = float(line_planet[3])
+    planet.x = float(line_planet[4])
+    planet.y = float(line_planet[5])
+    planet.Vx = float(line_planet[6])
+    planet.Vy = float(line_planet[7])
+
 
 def write_space_objects_data_to_file(output_filename, space_objects):
     """Сохраняет данные о космических объектах в файл.
@@ -89,8 +108,7 @@ def write_space_objects_data_to_file(output_filename, space_objects):
     """
     with open(output_filename, 'w') as out_file:
         for obj in space_objects:
-            print(out_file, "%s %d %s %f" % ('1', 2, '3', 4.5))
-            # FIXME!
+            out_file.write(obj.R, obj.color, obj.m, obj.x, obj.y, obj.Vx, obj.Vy)
 
 
 if __name__ == "__main__":
