@@ -2,7 +2,8 @@
 # license: GPLv3
 
 import pygame as pg
-
+colors = {'red': (255, 0, 0), 'green': (0, 255, 0), 'blue': (0, 0, 255), 'orange': (255, 165, 0),
+          'yellow': (255, 255, 0), 'white': (255, 255, 255), 'grey': (128, 128, 128)}
 """Модуль визуализации.
 Нигде, кроме этого модуля, не используются экранные координаты объектов.
 Функции, создающие гaрафические объекты и перемещающие их на экране, принимают физические координаты
@@ -84,8 +85,4 @@ class DrawableObject:
         self.obj = obj
 
     def draw(self, surface):
-       # x = scale_x(self.x)
-        #y = scale_y(self.y)
-        #r = self.R
-        #surface. = surface.create_oval([ x - r, y - r], [x + r, y + r], fill=self.color)
-       #     pass
+        pg.draw.circle(surface, colors[self.obj.color], (scale_x(self.obj.x), scale_y(self.obj.y)), self.obj.R)
